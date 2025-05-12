@@ -6,7 +6,7 @@ import { ArrowRight, Download } from "lucide-react";
 import { TextGenerateEffect } from "@/components/ui/aceternity/text-generate-effect";
 import { TypingEffect } from "@/components/ui/aceternity/typing-effect";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import {
   Dialog,
   DialogContent,
@@ -15,9 +15,17 @@ import {
   DialogHeader,
   DialogTitle,
 } from "@/components/ui/dialog";
+import dynamic from "next/dynamic";
+const Lottie = dynamic(() => import("lottie-react"), { ssr: false });
+import heroAnimation from "@/public/assets/lottie/hero.json";
 
 export default function Hero() {
   const [showResumeModal, setShowResumeModal] = useState(false);
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   return (
     <section className="relative py-20 md:py-28 overflow-hidden">
@@ -76,12 +84,12 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: 0.2 }}
           >
-            <div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-background/5 rounded-lg border border-border/40"></div>
-            <div className="absolute inset-0 flex items-center justify-center">
-              <h2 className="text-4xl font-bold text-primary/80">
-                Professional Portfolio
-              </h2>
-            </div>
+            <Lottie
+              className="h-[400px]"
+              animationData={heroAnimation}
+              loop={true}
+              autoplay={true}
+            />
           </motion.div>
         </div>
       </div>
