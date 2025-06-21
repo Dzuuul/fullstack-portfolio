@@ -1,8 +1,8 @@
-"use client"
+"use client";
 
-import Link from "next/link"
-import { Github, Linkedin, Twitter } from "lucide-react"
-import { motion } from "framer-motion"
+import Link from "next/link";
+import { Github, Linkedin, Twitter } from "lucide-react";
+import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
@@ -15,7 +15,7 @@ export default function Footer() {
           transition={{ duration: 0.5 }}
         >
           <p className="text-center text-sm leading-loose text-muted-foreground md:text-left">
-            © {new Date().getFullYear()} DevPortfolio. All rights reserved.
+            © {new Date().getFullYear()} FikriMaulana. All rights reserved.
           </p>
         </motion.div>
         <motion.div
@@ -54,5 +54,5 @@ export default function Footer() {
         </motion.div>
       </div>
     </footer>
-  )
+  );
 }

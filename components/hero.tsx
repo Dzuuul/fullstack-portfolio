@@ -1,122 +1,55 @@
-"use client"
+"use client";
 
-import { Button } from "@/components/ui/button"
-import Link from "next/link"
-import { ArrowRight, Download } from "lucide-react"
-import { TextGenerateEffect } from "@/components/ui/aceternity/text-generate-effect"
-import { TypingEffect } from "@/components/ui/aceternity/typing-effect"
-import { motion } from "framer-motion"
-import { MarqueeScroll } from "@/components/ui/aceternity/3d-marquee"
+import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
+import { Zap } from "lucide-react";
+import { TextGenerateEffect } from "@/components/ui/aceternity/text-generate-effect";
+import { motion } from "framer-motion";
 
 export default function Hero() {
-  const technologies = [
-    "React",
-    "Next.js",
-    "TypeScript",
-    "Node.js",
-    "NestJS",
-    "PostgreSQL",
-    "MongoDB",
-    "GraphQL",
-    "Tailwind CSS",
-    "Redux",
-    "Express",
-    "Docker",
-  ]
-
   return (
-    <section className="py-20 md:py-28 overflow-hidden">
-      <div className="container">
-        <div className="grid gap-8 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_500px] items-center">
-          <motion.div
-            className="flex flex-col justify-center space-y-5"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-          >
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none">
-                <TextGenerateEffect words="Full-Stack Developer" className="text-foreground" />
-              </h1>
-              <div className="h-12 md:h-16 mt-2">
-                <TypingEffect
-                  words={[
-                    "Building modern web applications",
-                    "Specializing in Next.js & React",
-                    "Creating beautiful user experiences",
-                    "Developing scalable backend systems",
-                  ]}
-                  className="text-xl md:text-2xl text-muted-foreground"
-                  cursorClassName="text-xl md:text-2xl text-muted-foreground"
-                />
-              </div>
-            </div>
-            <motion.div
-              className="flex flex-col sm:flex-row gap-3 mt-2"
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-            >
-              <Button asChild size="lg">
-                <Link href="#projects">
-                  View Projects <ArrowRight className="ml-2 h-4 w-4" />
-                </Link>
-              </Button>
-              <Button variant="outline" size="lg">
-                <Download className="mr-2 h-4 w-4" /> Download Resume
-              </Button>
-            </motion.div>
-          </motion.div>
-
-          <motion.div
-            className="flex items-center justify-center"
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
-            <div className="relative w-full h-[300px] overflow-hidden rounded-xl border border-border">
-              <MarqueeScroll direction="left" speed={0.5} className="absolute top-0 left-0 w-full">
-                <div className="flex gap-4 py-4 px-2">
-                  {technologies.map((tech, i) => (
-                    <div
-                      key={`tech-1-${i}`}
-                      className="flex items-center justify-center px-6 py-3 rounded-lg bg-card border border-border min-w-[120px]"
-                    >
-                      <span className="font-medium">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </MarqueeScroll>
-
-              <MarqueeScroll direction="right" speed={0.7} className="absolute top-[100px] left-0 w-full">
-                <div className="flex gap-4 py-4 px-2">
-                  {technologies.reverse().map((tech, i) => (
-                    <div
-                      key={`tech-2-${i}`}
-                      className="flex items-center justify-center px-6 py-3 rounded-lg bg-card border border-border min-w-[120px]"
-                    >
-                      <span className="font-medium">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </MarqueeScroll>
-
-              <MarqueeScroll direction="left" speed={0.6} className="absolute top-[200px] left-0 w-full">
-                <div className="flex gap-4 py-4 px-2">
-                  {technologies.slice(3, 9).map((tech, i) => (
-                    <div
-                      key={`tech-3-${i}`}
-                      className="flex items-center justify-center px-6 py-3 rounded-lg bg-card border border-border min-w-[120px]"
-                    >
-                      <span className="font-medium">{tech}</span>
-                    </div>
-                  ))}
-                </div>
-              </MarqueeScroll>
-            </div>
-          </motion.div>
+    <section className="relative py-20 md:py-28 overflow-hidden flex items-center justify-center min-h-[80vh]">
+      {/* Dekorasi Kiri Atas */}
+      <div className="absolute top-8 left-8 z-0">
+        <div className="bg-white shadow-lg rounded-xl p-4 rotate-12">
+          <Zap className="text-primary w-8 h-8" />
         </div>
       </div>
+      {/* Dekorasi Kanan Bawah */}
+      <div className="absolute bottom-8 right-8 z-0">
+        <div className="bg-white shadow-lg rounded-xl p-4 -rotate-12">
+          <Zap className="text-primary w-8 h-8" />
+        </div>
+      </div>
+      <div className="container relative z-10 flex flex-col items-center justify-center text-center max-w-2xl mx-auto">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="flex flex-col items-center gap-6"
+        >
+          <Badge className="bg-emerald-200 text-emerald-900 px-4 py-2 rounded-full text-sm font-medium mb-2">
+            <span className="mr-2">🟢</span> New! Record user interviews without
+            recording bots
+          </Badge>
+          <h1 className="text-3xl font-bold tracking-tight sm:text-5xl xl:text-6xl/none">
+            <TextGenerateEffect
+              words="Record interviews. Centralise feedback automatically."
+              className="text-primary"
+            />
+          </h1>
+          <p className="text-muted-foreground text-lg md:text-xl max-w-xl mx-auto">
+            Record and organize user interviews automatically. Focus on what
+            matters – connecting with users.
+          </p>
+          <Button
+            size="lg"
+            className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-6 text-lg font-semibold shadow-lg mt-2"
+          >
+            Get started – it's free
+          </Button>
+        </motion.div>
+      </div>
     </section>
-  )
+  );
 }
